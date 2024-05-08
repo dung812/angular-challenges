@@ -1,0 +1,5 @@
+<div>
+  <span>{{ todoItem.title }}</span>
+  <button (click)="updateEvent.emit(todoItem)">Update</button>
+  <button (click)="deleteEvent.emit(todoItem.id)">Delete</button>
+</div>

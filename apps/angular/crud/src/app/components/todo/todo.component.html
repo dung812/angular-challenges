@@ -1,0 +1,14 @@
+<ng-container *ngIf="state$ | async as state">
+  @if(state.isLoading) {
+    <mat-spinner *ngIf="state.isLoading"></mat-spinner>
+  } @else {
+    @if(state.todoList.length === 0) {
+      <p>No item</p>
+    } @else {
+      <div *ngFor="let todo of state.todoList">
+        <app-todo-item [todoItem]="todo" (updateEvent)="update($event)" (deleteEvent)="delete($event)"></app-todo-item>
+      </div>
+    }
+  }
+</ng-container>
+
