@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { randText } from '@ngneat/falso';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -6,7 +6,7 @@ import { ITodo } from '../interfaces/ITodo';
 
 interface ListState {
   isLoading: boolean;
-  todoList: ITodo[]; // the list of Users
+  todoList: ITodo[];
 }
 
 @Injectable()
@@ -30,8 +30,9 @@ export class TodoService {
             todoList: todoListResponse,
           });
         },
-        () => {
+        (error: HttpErrorResponse) => {
           this.stateSubject.next({ isLoading: false, todoList: [] });
+          alert(error.message);
         },
       );
   }
@@ -57,8 +58,9 @@ export class TodoService {
             todoList: getState.todoList,
           });
         },
-        () => {
+        (error: HttpErrorResponse) => {
           this.stateSubject.next({ isLoading: false, todoList: [] });
+          alert(error.message);
         },
       );
   }
@@ -80,8 +82,9 @@ export class TodoService {
             todoList: getState.todoList,
           });
         },
-        () => {
+        (error: HttpErrorResponse) => {
           this.stateSubject.next({ isLoading: false, todoList: [] });
+          alert(error.message);
         },
       );
   }
