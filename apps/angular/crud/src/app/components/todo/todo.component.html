@@ -1,0 +1,8 @@
+<ng-container *rxLet="vm$ as vm">
+  <app-todo-item
+    *rxFor="let todo of vm.todos; trackBy: trackById"
+    [todo]="todo"
+    (deleteEvent)="todosState.delete($event)"
+    (updateEvent)="todosState.update($event)">
+  </app-todo-item>
+</ng-container>

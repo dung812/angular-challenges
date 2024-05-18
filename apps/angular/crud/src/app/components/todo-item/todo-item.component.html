@@ -1,0 +1,11 @@
+<ng-container *rxLet="vm$ as vm">
+  <div>
+    <mat-spinner *rxIf="vm.loading" [diameter]="20"></mat-spinner>
+    {{ vm.todo.title }}
+    <button (click)="updateEvent.emit(vm.todo.id)">Update</button>
+    <button (click)="deleteEvent.emit(vm.todo.id)">Delete</button>
+    <span class="error" *rxIf="vm.todo.error">{{
+      vm.todo.error
+    }}</span>
+  </div>
+</ng-container>
